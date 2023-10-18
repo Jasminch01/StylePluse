@@ -1,13 +1,35 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle} from 'react-icons/fc';
-import { useContext } from "react";
+import { HiMiniEyeSlash, HiMiniEye } from "react-icons/hi2";
+import { useContext, useState } from "react";
 import { ContextPrider } from "../../../Context/Context";
 
 const Login = () => {
-  const {signInGoogle} = useContext(ContextPrider);
+  const {signInGoogle, signInEmailPass} = useContext(ContextPrider);
+  const [error, setError] = useState(null);
+  const [isShow, setIsShow] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+
 
   const location = useLocation();
   const navigate  = useNavigate();
+
+  const handleLogIn = (e) => {
+    e.preventDefault();
+
+    setError(' ')
+    
+    signInEmailPass(email, password)
+      .then(() => {
+        navigate(location?.state? location.state : '/')
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
 
   const googleSignIn = () => {
     signInGoogle()
@@ -16,6 +38,7 @@ const Login = () => {
     })
     .catch(error => {
       console.log(error)
+      setError(error.message)
     })
   }
   return (
@@ -28,13 +51,13 @@ const Login = () => {
             </p>
           </div>
           <div className=" w-full pb-4 shadow-2xl lg:w-96">
-            <form  className="card-body">
+            <form onSubmit={handleLogIn}  className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                //   onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   name="email"
                   placeholder="email"
@@ -47,22 +70,22 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                //   onChange={(e) => setPassword(e.target.value)}
-                //   type={isShow ? "text" : "password"}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type={isShow ? "text" : "password"}
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
                   required
                 />
                 <span
-                //   onClick={() => setIsShow(!isShow)}
+                  onClick={() => setIsShow(!isShow)}
                   className="absolute right-3 top-14"
                 >
-                  {/* {!isShow ? (
+                  {!isShow ? (
                     <HiMiniEye></HiMiniEye>
                   ) : (
                     <HiMiniEyeSlash></HiMiniEyeSlash>
-                  )} */}
+                  )}
                 </span>
               </div>
               <div className="form-control mt-6">
@@ -86,9 +109,9 @@ const Login = () => {
             </div>
           </div>
           <div className="mt-10">
-            {/* {error && (
+            {error && (
               <p className="text-sm text-red-500 text-center">{error}</p>
-            )} */}
+            )}
           </div>
         </div>
       </div>
