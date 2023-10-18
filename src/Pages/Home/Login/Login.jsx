@@ -1,7 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle} from 'react-icons/fc';
+import { useContext } from "react";
+import { ContextPrider } from "../../../Context/Context";
 
 const Login = () => {
+  const {signInGoogle} = useContext(ContextPrider);
+
+  const location = useLocation();
+  const navigate  = useNavigate();
+
+  const googleSignIn = () => {
+    signInGoogle()
+    .then(() => {
+      navigate(location?.state? location.state : '/')
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
   return (
     <div>
       <div className="hero min-h-screen">
@@ -63,7 +79,7 @@ const Login = () => {
             </form>
             <div className="text-center">
               <p className="text-xl font-semibold">Log in with</p>
-              <button >
+              <button onClick={googleSignIn} >
                 {" "}
                 <FcGoogle className="text-2xl"></FcGoogle>{" "}
               </button>

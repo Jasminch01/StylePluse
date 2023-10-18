@@ -1,5 +1,6 @@
 import {useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FaCartPlus } from "react-icons/fa";
 
 const Details = () => {
   const product = useLoaderData({});
@@ -36,7 +37,7 @@ const Details = () => {
           <p>Rating : {rating}</p>
           <p>Price : ${price}</p>
           <p>Info : {discription}</p>
-          <button onClick={addCartHandler} className="p-3 bg-teal-500 text-white">Add to Cart</button>
+          <button onClick={addCartHandler} className="p-3 bg-teal-500 text-white flex items-center">Add to Cart <FaCartPlus className="text-xl ml-4"></FaCartPlus> </button>
         </div>
       </div>
     </div>
