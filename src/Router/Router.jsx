@@ -21,7 +21,7 @@ const Router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader : () => fetch(`http://localhost:5000/products`)
+        loader : () => fetch(`https://style-pulse-server.vercel.app/products`)
       },
       {
         path: "/addproduct",
@@ -42,13 +42,13 @@ const Router = createBrowserRouter([
             <MyCart></MyCart>
           </PrivetRoute>
         ),
-        loader: () => fetch(`http://localhost:5000/cart`),
+        loader: () => fetch(`https://style-pulse-server.vercel.app/cart`),
       },
       {
         path: "/brands/:name",
         element: <Brand></Brand>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.name}`),
+          fetch(`https://style-pulse-server.vercel.app/products/${params.name}`),
       },
       {
         path: "/products",
@@ -60,12 +60,12 @@ const Router = createBrowserRouter([
         <Details></Details>
         </PrivetRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.id}`),
+          fetch(`https://style-pulse-server.vercel.app/product/${params.id}`),
       },
       {
         path : '/update/:id',
         element : <PrivetRoute> <Update> </Update> </PrivetRoute>,
-        loader : ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+        loader : ({params}) => fetch(`https://style-pulse-server.vercel.app/product/${params.id}`)
 
         
       }

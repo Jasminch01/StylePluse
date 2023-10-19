@@ -30,7 +30,7 @@ const Update = () => {
             rating,
         }
         console.log(product)
-        fetch(`http://localhost:5000/products/${upateProduct._id}`, {
+        fetch(`https://style-pulse-server.vercel.app/products/${upateProduct._id}`, {
             method : 'PUT',
             headers : {
                 'content-type' : 'application/json'

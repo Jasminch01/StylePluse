@@ -9,7 +9,7 @@ const Details = () => {
   const addCartHandler = ()=> {
     const product = {name, price, discription, photo, type, rating};
     console.log(product)
-    fetch('http://localhost:5000/cart', {
+    fetch('https://style-pulse-server.vercel.app/cart', {
         method : 'POST',
         headers : {
             'content-type' : 'application/json',

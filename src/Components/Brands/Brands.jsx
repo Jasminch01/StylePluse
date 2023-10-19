@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Brands = () => {
   const [brands, setBrands] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/brands")
+    fetch("https://style-pulse-server.vercel.app/brands")
       .then((res) => res.json())
       .then((data) => {
         setBrands(data.brands);

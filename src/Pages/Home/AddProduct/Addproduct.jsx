@@ -23,7 +23,7 @@ const Addproduct = () => {
             rating,
         }
         console.log(product)
-        fetch('http://localhost:5000/products', {
+        fetch('https://style-pulse-server.vercel.app/products', {
             method : 'POST',
             headers : {
                 'content-type' : 'application/json'
