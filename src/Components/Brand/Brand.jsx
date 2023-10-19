@@ -4,7 +4,6 @@ import Banner from "../Banner/Banner";
 
 const Brand = () => {
   const loadedBrand = useLoaderData();
-  console.log(loadedBrand)
   return (
     <div className="w-[80%] mx-auto">
       <div>

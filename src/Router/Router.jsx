@@ -9,6 +9,7 @@ import Products from "../Components/Products/Products";
 import Details from "../Components/Details/Details";
 import Register from "../Pages/Register/Register";
 import PrivetRoute from "./PrivetRoute";
+import Update from "../Pages/Update/Update";
 
 const Router = createBrowserRouter([
   {
@@ -59,6 +60,13 @@ const Router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/product/${params.id}`),
       },
+      {
+        path : '/update/:id',
+        element : <PrivetRoute> <Update> </Update> </PrivetRoute>,
+        loader : ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+
+        
+      }
     ],
   },
 ]);
