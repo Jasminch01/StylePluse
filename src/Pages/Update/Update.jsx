@@ -1,12 +1,13 @@
 
+import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 const Update = () => {
 
-    const upateProduct = useLoaderData({});
-//   const { name, price, discription, photo, type, brand, rating } = upateProduct;
+  const [reset , setReset] = useState('')
 
+    const upateProduct = useLoaderData({});
 
     const addProductHandler = (e) => {
         e.preventDefault();
@@ -29,7 +30,7 @@ const Update = () => {
             rating,
         }
         console.log(product)
-        fetch('http://localhost:5000/products', {
+        fetch(`http://localhost:5000/products/${upateProduct._id}`, {
             method : 'PUT',
             headers : {
                 'content-type' : 'application/json'
@@ -38,8 +39,10 @@ const Update = () => {
         })
         .then(res => res.json())
         .then(data => {
-            if (data.insertedId ) {
+          console.log(data)
+            if (data. modifiedCount > 0) {
                 Swal.fire("", "Product Updated Successfully.", "success");
+                setReset(true)
                 form.reset()
             }
         })
@@ -66,7 +69,7 @@ const Update = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
-                    defaultValue={upateProduct.name}
+                    defaultValue={!reset ? upateProduct.name : 'name' }
                     className="input input-bordered w-full"
                     required
                   />
@@ -79,7 +82,7 @@ const Update = () => {
                     type="text"
                     name="brand"
                     placeholder="Brand Name"
-                    defaultValue={upateProduct.brand}
+                    defaultValue={!reset ?upateProduct.brand : ' Brand Name'}
                     className="input input-bordered w-full"
                     required
                   />
@@ -92,7 +95,7 @@ const Update = () => {
                     type="text"
                     name="type"
                     placeholder="Type"
-                    defaultValue={upateProduct.type}
+                    defaultValue={!reset ? upateProduct.type : 'Type'}
                     className="input input-bordered w-full"
                     required
                   />
@@ -105,7 +108,7 @@ const Update = () => {
                     type="text"
                     name="price"
                     placeholder="price"
-                    defaultValue={upateProduct.price}
+                    defaultValue={!reset ? upateProduct.price : 'Price'}
                     className="input input-bordered w-full"
                     required
                   />
@@ -118,7 +121,7 @@ const Update = () => {
                     type="text"
                     name="rating"
                     placeholder="Rating"
-                    defaultValue={upateProduct.rating}
+                    defaultValue={!reset? upateProduct.rating : 'Rating'}
                     className="input input-bordered w-full"
                     required
                   />
@@ -131,7 +134,7 @@ const Update = () => {
                     type="text"
                     name="photo"
                     placeholder="Photo Url"
-                    defaultValue={upateProduct.photo}
+                    defaultValue={!reset ? upateProduct.photo : 'Photo Url'}
                     className="input input-bordered w-full"
                     required
                   />
@@ -144,7 +147,7 @@ const Update = () => {
                     rows='10'
                     type="text"
                     name="discription"
-                    defaultValue={upateProduct.discription}
+                    defaultValue={! reset ? upateProduct.discription : 'description'}
                     placeholder="Short Discription"
                     className="border rounded-lg p-3"
                     required

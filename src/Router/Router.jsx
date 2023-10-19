@@ -10,11 +10,13 @@ import Details from "../Components/Details/Details";
 import Register from "../Pages/Register/Register";
 import PrivetRoute from "./PrivetRoute";
 import Update from "../Pages/Update/Update";
+import Error from "../Pages/Error/Error";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    errorElement :  <Error></Error> ,
     children: [
       {
         path: "/",
