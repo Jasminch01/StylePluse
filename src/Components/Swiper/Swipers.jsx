@@ -11,6 +11,7 @@ const Swipers = () => {
     "https://i.ibb.co/R2h0mwZ/6224346715-6-1-1.jpg",
     "https://i.ibb.co/yn34fsd/img-1.jpg",
     "https://i.ibb.co/W2YW305/img-2.jpg",
+    "https://i.ibb.co/Sv5PhxY/6514690800-6-1-1.jpg"
   ];
 
   return (
@@ -27,7 +28,7 @@ const Swipers = () => {
           <div className=" w-[80%] mx-auto">
             <div className="md:flex items-center justify-center">
               <div className="">
-                <img src={img} alt="" className="" />
+                <img src={img} alt="" className="w-[300px] h-[500px]" />
               </div>
               <div className="space-y-4">
                 <h1 className="md:text-5xl text-center md:text-start font-black">
