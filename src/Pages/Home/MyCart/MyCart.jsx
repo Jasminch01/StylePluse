@@ -1,5 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
-import { AiFillEye } from "react-icons/ai";
+import { useLoaderData } from "react-router-dom";
 import { BsFillCartDashFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import { useContext, useState } from "react";
@@ -72,13 +71,6 @@ const MyCart = () => {
                     >
                       <BsFillCartDashFill className="text-xl"></BsFillCartDashFill>
                     </button>
-                  </div>
-                  <div>
-                    <Link to="">
-                      <button className="p-3 bg-teal-400 text-white">
-                        <AiFillEye className="text-xl"></AiFillEye>
-                      </button>
-                    </Link>
                   </div>
                 </div>
               </div>
