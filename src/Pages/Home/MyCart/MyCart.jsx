@@ -2,9 +2,13 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AiFillEye } from "react-icons/ai";
 import { BsFillCartDashFill } from "react-icons/bs";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ContextPrider } from "../../../Context/Context";
 
 const MyCart = () => {
+  const {setLoading} = useContext(ContextPrider);
+  setLoading(false)
+
   const productCarts = useLoaderData();
 
   const [productsCarts, setProductsCart] = useState(productCarts);

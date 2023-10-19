@@ -1,6 +1,15 @@
-import {  NavLink } from "react-router-dom";
+import { useContext } from "react";
+import {  Link, NavLink } from "react-router-dom";
+import { ContextPrider } from "../../Context/Context";
+
+const defaultProfile = 'https://i.ibb.co/3cxMLXJ/user.png'
+
 
 const Navbar = () => {
+  const {user, logOut} = useContext(ContextPrider)
+  const signOutHandler = () => {
+    logOut()
+  }
   const links = (
     <>
       <li>
@@ -48,21 +57,6 @@ const Navbar = () => {
           My Cart
         </NavLink>{" "}
       </li>
-      <li>
-        {" "}
-        <NavLink
-          to="/Login"
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "bg-teal-500 text-white p-3"
-              : "p-3"
-          }
-        >
-          Login
-        </NavLink>{" "}
-      </li>
     </>
   );
   return (
@@ -104,7 +98,7 @@ const Navbar = () => {
               tabIndex={0}
               className="flex flex-col justify-center items-center"
             >
-              {/* <img
+              <img
                 src={
                   user
                     ? user.photoURL !== null
@@ -114,9 +108,9 @@ const Navbar = () => {
                 }
                 alt=""
                 className="w-9 rounded-full ring-2 ring-green-500 outline-offset-2"
-              /> */}
+              />
               <span className="text-center">
-                {/* {user?.displayName ? user.displayName.slice(0, 6) : " "} */}
+                {user?.displayName ? user.displayName.slice(0, 6) : " "}
               </span>
             </label>
             <ul
@@ -124,36 +118,36 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32 absolute right-0  md:-right-24"
             >
               <li className="cursor-pointer hover:bg-slate-300 p-3 md:hidden">
-                {/* {user?.displayName ? user.displayName : "User"} */}
+                {user?.displayName ? user.displayName : "User"}
               </li>
               <li className="cursor-pointer hover:bg-slate-300 p-3">Profile</li>
               <li className="cursor-pointer hover:bg-slate-300 p-3">Setting</li>
               <li className="cursor-pointer hover:bg-slate-300 p-3 md:hidden ">
-                {/* {!user ? (
+                {!user ? (
                   <Link to="/login" className="cursor-pointer">
                     Log in
                   </Link>
                 ) : (
-                  <button onClick={logOutHandle} className="cursor-pointer">
+                  <button onClick={signOutHandler} className="cursor-pointer">
                     Log out
                   </button>
-                )} */}
+                )}
               </li>
             </ul>
           </div>
           <div className="md:flex hidden">
-            {/* {!user ? (
+            {!user ? (
               <Link
                 to="/login"
-                className="p-2 bg-rose-500 text-white ms-3 cursor-pointer"
+                className="p-2 bg-teal-500 text-white ms-3 cursor-pointer"
               >
                 Log in
               </Link>
             ) : (
-              <button className="p-2 bg-rose-500 text-white ms-3 cursor-pointer">
+              <button onClick={signOutHandler} className="p-2 bg-teal-500 text-white ms-3 cursor-pointer">
                 Log out
               </button>
-            )} */}
+            )}
           </div>
         </div>
       </div>
