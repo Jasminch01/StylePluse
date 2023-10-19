@@ -26,7 +26,7 @@ const Product = ({ product }) => {
           </div>
           <div className="pl-8">
             <p>{name}</p>
-            <p>review {rating}</p>
+            <p>rating : {rating}</p>
             <p>Price : ${price}</p>
           </div>
         </div>
