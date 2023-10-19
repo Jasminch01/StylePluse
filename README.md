@@ -1,8 +1,11 @@
-# React + Vite
+# StylePulse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## projects Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Intuitive navigation and responsive design for mobile and desktop.Clear and attractive layout with high-quality images and easy-to-read fonts.
+- Categorized and filterable product listings. Detailed product pages with image, descriptions, price, and  ratings.
+- Shopping cart and checkout: Easy-to-use shopping cart add and remove items.
+- User registration and user management and user log in with email and password or google log in with using firebase secure authentication system.
+- Users can add their brand product and aloways can update the added product.
+- Have included a toggle switch or button this project user interface that allows users to switch between dark mode and light mode.
